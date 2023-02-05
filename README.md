@@ -17,3 +17,11 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+###后端环境
+SpringBoot2 JDK17 
+SpringWeb 
+Lombok 
+Mybatis Framework
+MySql Driver
