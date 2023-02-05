@@ -1,30 +1,51 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+  <!--  头部-->
+    <Header/>
+  <!--  主体-->
+    <div style="display: flex">
+  <!--    侧边栏-->
+      <Aside/>
+  <!--    内容区域-->
+      <router-view style="flex: 1"/>
+    </div>
+  </div>
+
+  <el-config-provider :locale="locale">
+    <slot name="app"></slot>
+  </el-config-provider>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
-}
+</style>
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+<script>
 
-nav a.router-link-exact-active {
-  color: #42b983;
+import Header from "@/components/Header.vue";
+import Aside from "@/components/Aside.vue";
+
+//引入vue方法
+import { ElConfigProvider } from 'element-plus'
+//中文包
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+
+export default {
+  name: "Layout",
+  components: {
+    Header,
+    Aside,
+    [ElConfigProvider.name]: ElConfigProvider
+  },
+  setup() {
+    let locale = zhCn
+    return {
+      locale,
+      size:'small'
+    }
+  }
 }
+</script>
+
+<style scoped lang='scss'>
 </style>
